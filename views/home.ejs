@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Home page</title>
+    <link rel="stylesheet" href="/css/home.css">
+</head>
+
+<body>
+    <header class="layerOne">
+        <h1>TraXersal</h1>
+        <nav>
+            <ul class="firstList">
+                <li class="searchBox">
+                    <input type="search" placeholder="Search Here">
+                </li>
+                <li class="fistListfirst"><a href='/login'>Log In</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+
+
+
+    <div class="container">
+        <div class="containerMap">
+            <iframe class="mapFrame"
+                src="https://createaclickablemap.com/map.php?&id=113503&maplocation=false&online=true"></iframe>
+            <script>
+                if (window.addEventListener) {
+                    window.addEventListener("message", function (event) {
+                        if (event.data.length >= 22) {
+                            if (event.data.substr(0, 22) == "__MM-LOCATION.REDIRECT") location = event.data.substr(22);
+                        }
+                    }, false);
+                } else if (window.attachEvent) {
+                    window.attachEvent("message", function (event) {
+                        if (event.data.length >= 22) {
+                            if (event.data.substr(0, 22) == "__MM-LOCATION.REDIRECT") location = event.data.substr(22);
+                        }
+                    }, false);
+                } 
+            </script>
+            <style>
+                ol.map li {
+                    float: none;
+                    width: 120px;
+                    border: 0px solid;
+                    height: 45px;
+                    padding-left: 6px;
+                }
+
+                ol.map li a {
+                    margin: 0;
+                    padding: 0;
+                    font-family: Arial, Helvetica, sans-serif;
+                    font-size: 18px;
+                    font-weight: normal;
+                    color: #4591b1;
+                }
+
+                ol.map li a:hover {
+                    text-decoration: none;
+                    color: #214b6e;
+                }
+
+                .linkBack {
+                    display: block;
+                    width: 130px;
+                    position: relative;
+                    bottom: 0px;
+                    left: 660px;
+                    font-family: Arial, Helvetica, sans-serif;
+                    font-size: 10px;
+                    font-style: italic;
+                    color: #666666;
+                }
+
+                .linkBack a {
+                    color: #666666;
+                }
+
+                .linkBack a:hover {
+                    color: #666666;
+                    text-decoration: none;
+                }
+            </style>
+        </div>
+
+
+        <div class="containerStates">
+            <ol class="map">
+                <% if (states.length) { %>
+                    <% states.forEach(state=> { %>
+                        <li><a href='/states/<%= state.value%>' target="_blank">
+                                <%= state.name%>
+                            </a></li>
+                        <% }); %>
+                            <% }; %>
+            </ol>
+        </div>
+
+    </div>>
+</body>
+
+</html>

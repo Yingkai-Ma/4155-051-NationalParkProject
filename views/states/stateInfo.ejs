@@ -1,0 +1,76 @@
+<! DOCTYPE html>
+  <html lang="en">
+
+  <head>
+    <title> State information </title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/stateInfo.css">
+    <script src="/javascript/map.js"></script>
+  </head>
+  <header>
+    <nav>
+      <ul class="firstList">
+        <li class="searchBox">
+          <input type="search" placeholder="Search Here">
+        </li>
+        <li class="fistListfirst"><a href="login.html">Log In</a></li>
+      </ul>
+    </nav>
+    <h1 class="headerName"><a href="home.html">TraXersal</a></h1>
+    <div class="dropdown">
+      <button onclick="dropDown()" class="dropbtn">menu</button>
+      <div id="myDropdown" class="dropdown-content">
+        <a href="home.html">Home</a>
+        <a href="#">State</a>
+        <a href="#">Reviews</a>
+        <a href="#">Contact</a>
+        <a href="#">About</a>
+      </div>
+    </div>
+
+
+  </header>
+
+  <body>
+    <div class="stateName"><img class="flag" src="./image/ncFlag.png" width="200" height="100" alt="NC Flag">
+      North Carolina </div>
+
+    <div id="map"></div>
+    <script>
+      var NPMap = {
+        div: 'map',
+        locateControl: true,
+        zoom: 7,
+        center: {
+          lat: 35.7596,
+          lng: -79.0193
+        },
+        baseLayers: [
+          'nps-parkTiles3'
+        ],
+        hashControl: true,
+        overlays: [{
+          preset: 'nps-places-pois',
+          unitCodes: [
+            'grsm'
+          ]
+        }]
+      };
+
+      (function () {
+        var s = document.createElement('script');
+        s.src = 'https://www.nps.gov/lib/npmap.js/4.0.0/npmap-bootstrap.js';
+        document.body.appendChild(s);
+      })();
+    </script>
+    <div class="info">
+      <h3> Nortth Carolina National Parks </h3>
+      <li> <a href='/parks/index'>Great Smokey Mountains</a></li>
+      <li> <a href="#">Blue Ridge Trail</a></li>
+      <li> <a href="#">Trail of Tears</a></li>
+      <li> <a href="#">Overmountain Victory</a></li>
+      <li> <a href="#">Wright Brothers Memorial</a></li>
+    </div>
+  </body>
+
+  </html>
