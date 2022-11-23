@@ -32,7 +32,7 @@
   </header>
 
   <body>
-    <div class="stateName"><img class="flag" src="./image/ncFlag.png" width="200" height="100" alt="NC Flag">
+    <div class="stateName">
       <%= state.name%></div>
 
     <div id="map"></div>
@@ -63,13 +63,29 @@
         document.body.appendChild(s);
       })();
     </script>
-    <div class="info">
-      <h3> <%= state.name %> National Parks </h3>
-      <li> <a href='/parks/index'>Great Smokey Mountains</a></li>
-      <li> <a href="#">Blue Ridge Trail</a></li>
-      <li> <a href="#">Trail of Tears</a></li>
-      <li> <a href="#">Overmountain Victory</a></li>
-      <li> <a href="#">Wright Brothers Memorial</a></li>
+    <script>
+      (function fetchData() {
+        fetch('https://developer.nps.gov/api/v1/parks?stateCode=<%= state.value %>&api_key=9pmlVnQfy5VVDKxPYb8Du9UOMm6e5Nem5dGuLJL1')
+          .then(res => {
+            return res.json();
+          })
+          .then((res) => {
+            const data = res.data;
+            for (data.park of data) {
+              console.log(data.park);
+              // append data to div class called info
+              var tag = document.createElement("p");
+              var text = document.createTextNode(data.park.fullName);
+              tag.appendChild(text);
+              var element = document.getElementById("info");
+              element.appendChild(tag);
+            }
+          })
+          .catch(error => console.log(error));
+    })();
+    </script>
+    <div class="info" id="info">
+      
     </div>
   </body>
 
