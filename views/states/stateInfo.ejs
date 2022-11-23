@@ -33,17 +33,17 @@
 
   <body>
     <div class="stateName"><img class="flag" src="./image/ncFlag.png" width="200" height="100" alt="NC Flag">
-      North Carolina </div>
+      <%= state.name%></div>
 
     <div id="map"></div>
     <script>
       var NPMap = {
         div: 'map',
         locateControl: true,
-        zoom: 7,
+        zoom: 5,
         center: {
-          lat: 35.7596,
-          lng: -79.0193
+          lat: '<%= state.lat%>',
+          lng: '<%= state.long%>'
         },
         baseLayers: [
           'nps-parkTiles3'
@@ -64,7 +64,7 @@
       })();
     </script>
     <div class="info">
-      <h3> Nortth Carolina National Parks </h3>
+      <h3> <%= state.name %> National Parks </h3>
       <li> <a href='/parks/index'>Great Smokey Mountains</a></li>
       <li> <a href="#">Blue Ridge Trail</a></li>
       <li> <a href="#">Trail of Tears</a></li>
