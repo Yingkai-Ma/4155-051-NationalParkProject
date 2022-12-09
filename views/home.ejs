@@ -2,28 +2,46 @@
 <html>
 
 <head>
-    <title>Home page</title>
-    <link rel="stylesheet" href="/css/home.css">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="/css/design.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+        <a class="navbar-brand" href="#">TraXersal</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Login</a>
+            </li>
+
+            <li class="nav-item active">
+              <a class="nav-link" href="#">
+                <div class="stateName">
+                    U.S. National Parks</div>
+                <span class="sr-only">(current)</span></a>
+            </li>
+            
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+      </nav>
+
+</header>
+
 <body>
-    <header class="layerOne">
-        <h1>TraXersal</h1>
-        <nav>
-            <ul class="firstList">
-                <li class="searchBox">
-                    <input type="search" placeholder="Search Here">
-                </li>
-                <li class="fistListfirst"><a href='/login'>Log In</a></li>
-            </ul>
-        </nav>
-    </header>
 
-
-
-
-
-    <div class="container">
         <div class="containerMap">
             <iframe class="mapFrame"
                 src="https://createaclickablemap.com/map.php?&id=113503&maplocation=false&online=true"></iframe>
@@ -88,7 +106,6 @@
             </style>
         </div>
 
-
         <div class="containerStates">
             <ol class="map">
                 <% if (states.length) { %>
@@ -100,8 +117,11 @@
                             <% }; %>
             </ol>
         </div>
+        
+    
 
-    </div>>
+
+      
 </body>
 
 </html>
