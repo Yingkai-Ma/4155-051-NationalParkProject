@@ -46,38 +46,6 @@ body,html{
     width: 10%;
 }
 
-
-
-
-/* .table1{
-    float: left;
-    margin-inline-start: 20px; 
-    writing-mode: horizontal-tb;
-    margin-top: 10px; 
-}
-
-.table2{
-    float: left;
-    margin-inline-start: 20px; 
-    writing-mode: horizontal-tb;
-    margin-top: 10px; 
-}
-
-.table3{
-    float: left;
-    margin-inline-start: 20px; 
-    writing-mode: horizontal-tb;
-    margin-top: 10px; 
-}
-
-.table4{
-    float: left;
-    margin-inline-start: 20px; 
-    writing-mode: horizontal-tb;
-    margin-top: 10px; 
-} */
-
-
 /* css for state page */
 .stateName {
     font-size: 20px;
