@@ -8,7 +8,7 @@ const states = [
     { value: 'CA', name: 'California', lat: '36.778259', long: '-119.417931' },
     { value: 'CO', name: 'Colorado', lat: '39.113014', long: '-105.358887' },
     { value: 'CT', name: 'Connecticut', lat: '41.599998', long: '-72.699997' },
-    { value: 'DC', name: 'District of Columbia', lat: '38.942142', long: '-77.025955' },
+    { value: 'DC', name: 'Washington, D.C', lat: '38.942142', long: '-77.025955' },
     { value: 'DE', name: 'Delaware', lat: '39.000000', long: '-75.500000' },
     { value: 'FL', name: 'Florida', lat: '27.994402', long: '-81.760254' },
     { value: 'GA', name: 'Georgia', lat: '33.247875', long: '-83.441162' },

@@ -25,7 +25,7 @@ body,html{
     margin-top: 10px;  
     float: left;
     background-color: azure;
-    border: 2px solid rgb(19, 162, 187);
+    border: 2px solid rgb(14, 79, 42);
 }
 
 /* .containerStates{
@@ -60,6 +60,7 @@ body,html{
     border: none;
     float: left;
     background-color:#516145;
+    border: 5px;
     }
 
 /* .info {
@@ -83,9 +84,45 @@ body,html{
     }
 
 
+/* Below is the tab page/ park detail  */
+.tabContainer{
+   margin-inline-start: 20px;
+   margin-top: 10px;
+   margin-inline-end: 20px;
+}
+
+.tabContainer .buttonContainer button {
+    font: 1.5em gill sans;
+    background-color: rgb(66, 67, 66);
+    color: rgb(106, 202, 111);
+    border: 1px solid rgb(87, 231, 106);
+    border-radius: 5px;
+    font-weight: lighter;
+}
+
+.tabContainer  .tabPanel{
+    padding: 20px;
+    font: 1.5em Helvetica;
+    font-weight: lighter;
+    margin: 2px;
+    border: 1px solid rgb(87, 231, 106);
+    border-radius: 5px;
+}
 
 
 
+
+
+
+
+
+/* .buttonContainer{
+    color: blanchedalmond;
+} */
+
+
+
+/* style="margin: 20px;" */
 
 
 
