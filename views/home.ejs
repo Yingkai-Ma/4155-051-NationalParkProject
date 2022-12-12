@@ -4,163 +4,163 @@
 <head>
     <title>Home Page</title>
     <link rel="stylesheet" href="/css/design.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
 
-      <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-        <a class="navbar-brand" href="#">TraXersal</a>
-        <a class="navbar-brand" href="#">U.S. National Parks</a> <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto"></ul>
-   
-            <form class="form-inline my-2 my-lg-0">
-              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
-  
-          </div>
-          <div class="homeBt">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Home</button>
-          </div> 
-                
-          <div class="LoginBt">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="Login">Login</button>
-          </div>
-      </nav>
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <a class="navbar-brand" href="#">TraXersal</a>
+    <a class="navbar-brand" href="#">U.S. National Parks</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto"></ul>
+
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+
+    </div>
+    <div class="homeBt">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Home</button>
+    </div>
+
+    <div class="LoginBt">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="Login">Login</button>
+    </div>
+</nav>
 
 </header>
 
 <body>
 
-        <div class="containerMap">
-            <iframe class="mapFrame"
-                src="https://createaclickablemap.com/map.php?&id=113503&maplocation=false&online=true"></iframe>
-            <script>
-                if (window.addEventListener) {
-                    window.addEventListener("message", function (event) {
-                        if (event.data.length >= 22) {
-                            if (event.data.substr(0, 22) == "__MM-LOCATION.REDIRECT") location = event.data.substr(22);
-                        }
-                    }, false);
-                } else if (window.attachEvent) {
-                    window.attachEvent("message", function (event) {
-                        if (event.data.length >= 22) {
-                            if (event.data.substr(0, 22) == "__MM-LOCATION.REDIRECT") location = event.data.substr(22);
-                        }
-                    }, false);
-                } 
-            </script>
-            <style>
-                ol.map li {
-                    float: none;
-                    width: 120px;
-                    border: 0px solid;
-                    height: 45px;
-                    padding-left: 6px;
-                }
+    <div class="containerMap">
+        <iframe class="mapFrame"
+            src="https://createaclickablemap.com/map.php?&id=113503&maplocation=false&online=true"></iframe>
+        <script>
+            if (window.addEventListener) {
+                window.addEventListener("message", function (event) {
+                    if (event.data.length >= 22) {
+                        if (event.data.substr(0, 22) == "__MM-LOCATION.REDIRECT") location = event.data.substr(22);
+                    }
+                }, false);
+            } else if (window.attachEvent) {
+                window.attachEvent("message", function (event) {
+                    if (event.data.length >= 22) {
+                        if (event.data.substr(0, 22) == "__MM-LOCATION.REDIRECT") location = event.data.substr(22);
+                    }
+                }, false);
+            } 
+        </script>
+        <style>
+            ol.map li {
+                float: none;
+                width: 120px;
+                border: 0px solid;
+                height: 45px;
+                padding-left: 6px;
+            }
 
-                ol.map li a {
-                    margin: 0;
-                    padding: 0;
-                    font-family: Arial, Helvetica, sans-serif;
-                    font-size: 18px;
-                    font-weight: normal;
-                    color: #4591b1;
-                }
+            ol.map li a {
+                margin: 0;
+                padding: 0;
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 18px;
+                font-weight: normal;
+                color: #4591b1;
+            }
 
-                ol.map li a:hover {
-                    text-decoration: none;
-                    color: #214b6e;
-                }
+            ol.map li a:hover {
+                text-decoration: none;
+                color: #214b6e;
+            }
 
-                .linkBack {
-                    display: block;
-                    width: 130px;
-                    position: relative;
-                    bottom: 0px;
-                    left: 660px;
-                    font-family: Arial, Helvetica, sans-serif;
-                    font-size: 10px;
-                    font-style: italic;
-                    color: #666666;
-                }
+            .linkBack {
+                display: block;
+                width: 130px;
+                position: relative;
+                bottom: 0px;
+                left: 660px;
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 10px;
+                font-style: italic;
+                color: #666666;
+            }
 
-                .linkBack a {
-                    color: #666666;
-                }
+            .linkBack a {
+                color: #666666;
+            }
 
-                .linkBack a:hover {
-                    color: #666666;
-                    text-decoration: none;
-                }
-            </style>
-        </div>
+            .linkBack a:hover {
+                color: #666666;
+                text-decoration: none;
+            }
+        </style>
+    </div>
 
-        <!-- <div class="containerStates">
-            <ol class="map">
-                <% if (states.length) { %>
-                    <% states.forEach(state=> { %>
-                        <li><a href='/states/<%= state.value%>' target="_blank">
-                                <%= state.name%>
-                            </a></li>
-                        <% }); %>
-                            <% }; %>
-            </ol>
-        </div> -->
+    <div class="list-group" style="width: 120px;">
 
-       
+        <% if (states.length) { %>
+            <% states.slice(0,13).forEach(state=> { %>
+                <li><a href='/states/<%= state.value%>'
+                        class="list-group-item list-group-item-action list-group-item-success">
+                        <%= state.name%>
+                    </a></li>
+                <% }); %>
+                    <% }; %>
 
+    </div>
 
-        <div class="list-group" style="width: 120px;">
-            <% if (states.length) { %>
-                <% states.forEach(state=> { %>
-                    <li><a href="#" class="list-group-item list-group-item-action list-group-item-success"><%= state.name%></a></li>
-                        <% }); %>
-                    <% }; %>  
-        </div>
+    <div class="list-group" style="width: 120px;">
 
-        <!-- <div class="list-group" style="width: 120px;">
-            <% for(let i=0; i<13; i++)=> { %>
-                
-                    <li><a href="#" class="list-group-item list-group-item-action list-group-item-success"><%= state.name%></a></li>
-                        <% }); %>
-                    
-        </div> -->
-        <!-- <% console.log(states.name) %> -->
+        <% if (states.length) { %>
+            <% states.slice(13, 26).forEach(state=> { %>
+                <li><a href='/states/<%= state.value%>'
+                        class="list-group-item list-group-item-action list-group-item-success">
+                        <%= state.name%>
+                    </a></li>
+                <% }); %>
+                    <% }; %>
 
-        <div class="list-group" style="width: 120px;">
-            <% if (states.length) { %>
-                <% states.forEach(state=> { %>
-                    <li><a href="#" class="list-group-item list-group-item-action list-group-item-success"><%= state.name%></a></li>
-                        <% }); %>
-                    <% }; %>  
-        </div>
+    </div>
 
-        <div class="list-group" style="width: 120px;">
-            <% if (states.length) { %>
-                <% states.forEach(state=> { %>
-                    <li><a href="#" class="list-group-item list-group-item-action list-group-item-success"><%= state.name%></a></li>
-                        <% }); %>
-                    <% }; %>  
-        </div>
+    <div class="list-group" style="width: 120px;">
 
-        <div class="list-group" style="width: 120px;">
-            <% if (states.length) { %>
-                <% states.forEach(state=> { %>
-                    <li><a href="#" class="list-group-item list-group-item-action list-group-item-success"><%= state.name%></a></li>
-                        <% }); %>
-                    <% }; %>  
-        </div>
+        <% if (states.length) { %>
+            <% states.slice(26,39).forEach(state=> { %>
+                <li><a href='/states/<%= state.value%>'
+                        class="list-group-item list-group-item-action list-group-item-success">
+                        <%= state.name%>
+                    </a></li>
+                <% }); %>
+                    <% }; %>
+
+    </div>
+
+    <div class="list-group" style="width: 120px;">
+
+        <% if (states.length) { %>
+            <% states.slice(39,52).forEach(state=> { %>
+                <li><a href='/states/<%= state.value%>'
+                        class="list-group-item list-group-item-action list-group-item-success">
+                        <%= state.name%>
+                    </a></li>
+                <% }); %>
+                    <% }; %>
+
+    </div>
 
 
-          
-
-            
-        
-    
 
 
-      
+
+
+
+
+
+
+
+
 </body>
 
 </html>

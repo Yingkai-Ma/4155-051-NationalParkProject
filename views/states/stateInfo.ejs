@@ -5,34 +5,34 @@
     <title> State information </title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/css/design.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="/javascript/map.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
   <header>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-        <a class="navbar-brand" href="#">TraXersal</a>
-        <a class="navbar-brand" href="#">You are in <%= state.name%></a>
-               
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto"></ul>
- 
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
+      <a class="navbar-brand" href="#">TraXersal</a>
+      <a class="navbar-brand" href="#">You are in <%= state.name%></a>
 
-        </div>
-        <div class="homeBt">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Home</button>
-        </div> 
-              
-        <div class="LoginBt">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="Login">Login</button>
-        </div>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto"></ul>
 
-      </nav>
- 
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+
+      </div>
+      <div class="homeBt">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Home</button>
+      </div>
+
+      <div class="LoginBt">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="Login">Login</button>
+      </div>
+
+    </nav>
+
   </header>
 
 
@@ -44,25 +44,6 @@
 
     <div id="map"></div>
     <script>
-      var NPMap = {
-        div: 'map',
-        locateControl: true,
-        zoom: 6,
-        center: {
-          lat: '<%= state.lat%>',
-          lng: '<%= state.long%>'
-        },
-        baseLayers: [
-          'nps-parkTiles3'
-        ],
-        hashControl: true,
-        overlays: [{
-          preset: 'nps-places-pois',
-          unitCodes: [
-            'grsm'
-          ]
-        }]
-      };
 
       (function () {
         var s = document.createElement('script');
@@ -70,6 +51,31 @@
         document.body.appendChild(s);
       })();
     </script>
+
+
+
+    <script>
+      function initMap() {
+        // The location of Uluru
+        const uluru = { lat: -25.344, lng: 131.031 };
+        // The map, centered at Uluru
+        const map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 4,
+          center: uluru,
+        });
+        // The marker, positioned at Uluru
+        const marker = new google.maps.Marker({
+          position: uluru,
+          map: map,
+        });
+      }
+    </script>
+
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBTHDMhQbJiMsomY1VInOxX2ebn-bekgvc&callback=initMap&v=weekly"
+      defer></script>
+
+
     <script>
       (function fetchData() {
         fetch('https://developer.nps.gov/api/v1/parks?stateCode=<%= state.value %>&api_key=9pmlVnQfy5VVDKxPYb8Du9UOMm6e5Nem5dGuLJL1')
@@ -81,32 +87,29 @@
             for (data.park of data) {
               console.log(data.park);
               // append data to div class called info
-              var tag = document.createElement("p");
-              var text = document.createTextNode(data.park.fullName);
-              tag.appendChild(text);
+              var a = document.createElement('a');
+              a.className = "list-group-item list-group-item-action list-group-item-success";
+              var link = document.createTextNode(data.park.fullName);
+              a.appendChild(link);
+              var parkCode = data.park.parkCode;       //Using parkCode as a identifier
+              a.href = "/states/<%=state.value%>/" + parkCode; //Routing for the third Page
+              var space = document.createElement('br');
+              a.appendChild(space);
               var element = document.getElementById("info");
-              element.appendChild(tag);
+              element.append(a);
             }
           })
           .catch(error => console.log(error));
-    })();
+      })();
     </script>
-    <!-- <div class="info" id="info"> -->
-    
-    <div class="list-group" style="width: 550px;">
-  
-      <a href="#" class="list-group-item list-group-item-action list-group-item-success">Park list 1</a>
-      <a href="#" class="list-group-item list-group-item-action list-group-item-success">Park list 2</a>
-      <a href="#" class="list-group-item list-group-item-action list-group-item-success">Park list 3</a>
-      <a href="#" class="list-group-item list-group-item-action list-group-item-success">Park list 1</a>
-      <a href="#" class="list-group-item list-group-item-action list-group-item-success">Park list 2</a>
-      <a href="#" class="list-group-item list-group-item-action list-group-item-success">Park list 3</a>
-      <a href="#" class="list-group-item list-group-item-action list-group-item-success">Park list 1</a>
-      <a href="#" class="list-group-item list-group-item-action list-group-item-success">Park list 2</a>
-      <a href="#" class="list-group-item list-group-item-action list-group-item-success">Park list 3</a>
+
+
+    <div class="list-group" id="info" style="width: 550px;">
+
+
     </div>
-   
-      
+
+
 
 
     </div>

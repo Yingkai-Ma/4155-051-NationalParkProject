@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Tabs</title>
+  <link rel="stylesheet" type="text/css" href="css.css">
+  <link rel="icon" type="image/x-icon" href="favicon.png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<header>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <a class="navbar-brand" href="#">TraXersal</a>
+    <a class="navbar-brand" href="#">You are in <%= parkCode%></a>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto"></ul>
+
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+
+    </div>
+    <div class="homeBt">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Home</button>
+    </div>
+
+    <div class="LoginBt">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="Login">Login</button>
+    </div>
+
+  </nav>
+
+</header>
+
+<body style="background-color:#516145;">
+
+  <div class="tabContainer">
+    <div class="buttonContainer">
+      <button onclick="showPanel(0,'#f44336')">Name address phone hours</button>
+      <button onclick="showPanel(1,'#4caf50')">Event and activities</button>
+      <button onclick="showPanel(2,'#2196f3')">Campgrounds and Amenties</button>
+      <button onclick="showPanel(3,'#ff5722')">Alerts</button>
+      <button onclick="showPanel(4,'#f44336')">Webcam</button>
+      <button onclick="showPanel(5,'#4caf50')">Comments and Reviews</button>
+      <button onclick="showPanel(6,'#2196f3')">Images</button>
+      <button onclick="showPanel(7,'#ff5722')">Tours</button>
+      <button onclick="showPanel(8,'#ff5722')">Extra Space</button>
+    </div>
+    <div class="tabPanel" id="tab1"></div>
+    <div class="tabPanel" id="tab2">
+    </div>
+    <div class="tabPanel" id="tab3"></div>
+    <div class="tabPanel">Tab 4:Content</div>
+    <div class="tabPanel">Tab 5:Content</div>
+    <div class="tabPanel">Tab 6:Content</div>
+    <div class="tabPanel">Tab 7:Content</div>
+    <div class="tabPanel">Tab 8:Content</div>
+    <div class="tabPanel">Tab 9:Content</div>
+  </div>
+
+  <script src="/javascript/myScript.js"></script>
+
+  <script>
+    (function fetchData() {
+      fetch('https://developer.nps.gov/api/v1/parks?parkCode=<%=parkCode%>&api_key=9pmlVnQfy5VVDKxPYb8Du9UOMm6e5Nem5dGuLJL1')
+        .then(res => {
+          return res.json();
+        })
+        .then((park) => {
+          parkData = park.data[0]
+          console.log(parkData);
+          //-----------Tab1 Filling-----------------------
+          //Getting Park Name
+          var p = document.createElement('p');
+          var text = document.createTextNode(parkData.fullName);
+          p.appendChild(text);
+          var element = document.getElementById("tab1");
+          element.appendChild(p);
+          //Getting Address
+          var p1 = document.createElement('p');
+          var text1Raw = parkData.addresses[1].line1 + ' ' + parkData.addresses[1].city + ' ' + parkData.addresses[1].stateCode + ' ' + parkData.addresses[1].postalCode;
+          var text1 = document.createTextNode(text1Raw);
+          p1.append(text1);
+          element.append(p1);
+          //Getting Phone Numbers
+          var p2 = document.createElement('p');
+          var text2 = document.createTextNode(parkData.contacts.phoneNumbers[0].phoneNumber);
+          p2.appendChild(text2);
+          element.appendChild(p2);
+          //Getting Operation Hours
+          var p3 = document.createElement('p');
+          text3Raw = 'Monday: ' + parkData.operatingHours[0].standardHours.monday + '  Tuesday: ' + parkData.operatingHours[0].standardHours.tuesday + ' Wednesday: ' + parkData.operatingHours[0].standardHours.wednesday + ' Thursday: ' + parkData.operatingHours[0].standardHours.thursday + ' Friday: ' + parkData.operatingHours[0].standardHours.friday + ' Saturday: ' + parkData.operatingHours[0].standardHours.saturday + ' Sunday: ' + parkData.operatingHours[0].standardHours.sunday;
+          var text3 = document.createTextNode(text3Raw);
+          p3.appendChild(text3);
+          element.appendChild(p3);
+          //-----------Tab2 Filling-----------------------
+          const eventName = parkData.activities.map(event => event.name);
+          var element2 = document.getElementById("tab2");
+          eventName.forEach(event => {
+            var p4 = document.createElement('p');
+            p4.append(event);
+            element2.append(p4);
+          });
+          //-----------Tab3 Filling-----------------------
+          //* Note ! Have to start a different API Fetch in function fetchDataTab3
+
+        })
+        .catch(error => console.log(error));
+    })();
+
+
+    (function fetchDataTab3() {
+      fetch('https://developer.nps.gov/api/v1/amenities/parksplaces?parkCode=<%=parkCode%>&api_key=9pmlVnQfy5VVDKxPYb8Du9UOMm6e5Nem5dGuLJL1')
+        .then(res => {
+          return res.json();
+        })
+        .then((park) => {
+          parkData = park.data[0]
+          console.log(parkData);
+          let amentiesName = parkData[0].name;
+          let element = document.getElementById("tab3");
+          element.append(amentiesName);
+          let space = document.createElement('br');
+          element.append(space);
+          let placesArr = parkData[0].parks[0].places;
+          let details = placesArr.map(place => {
+            return place.title;
+          });
+          let detailsInArr = Object.values(details);
+          detailsInArr.forEach(place => {
+            element.append(place);
+            let space = document.createElement('br');
+            element.append(space);
+          });
+          let url = parkData[0].parks[0].url;
+          let link = document.createElement('a');
+          link.append('ClickMe!')
+          link.href = url;
+          link.target = '_blank';
+          element.append('Please visit the offical website for more information:   ');
+          element.append(link);
+        })
+        .catch(error => console.log(error));
+    }
+    )();   
+  </script>
+
+
+
+
+</body>
+
+</html>
