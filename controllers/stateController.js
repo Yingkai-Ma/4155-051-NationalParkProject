@@ -14,3 +14,11 @@ exports.show = (req, res, next) => {
     }
 }
 
+//GET  /states/:id/parkCode send html for viewing the specific park
+
+exports.view = (req, res, next) => {
+    let parkCode = req.params.parkCode;
+
+    res.render('./states/parkInfo', { parkCode });
+
+}
