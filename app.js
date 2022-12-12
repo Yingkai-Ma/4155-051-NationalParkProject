@@ -3,7 +3,6 @@ const express = require('express');
 const morgan = require('morgan');
 const indexRoutes = require('./routes/indexRoutes');
 const stateRoutes = require('./routes/stateRoutes');
-const parkRoutes = require('./routes/parkRoutes');
 const methodOverride = require('method-override');
 //create  app
 const app = express();
@@ -24,7 +23,7 @@ app.use(methodOverride('_method'));
 //set up routes
 app.use('/', indexRoutes);
 app.use('/states', stateRoutes);
-app.use('/parks', parkRoutes);
+
 
 //start the server
 app.listen(port, host, () => {
