@@ -8,7 +8,7 @@ const router = express.Router();
 router.get('/:value', controller.show)
 
 
-
+router.get('/:value/:parkCode', controller.view);
 
 
 
