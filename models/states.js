@@ -2,7 +2,6 @@
 
 const states = [
     { value: 'AK', name: 'Alaska', lat: '66.160507', long: '-153.369141' },
-    { value: 'TX', name: 'Texas', lat: '31.000000', long: '-100.000000' },
     { value: 'AL', name: 'Alabama', lat: '32.318230', long: '-86.902298' },
     { value: 'AR', name: 'Arkansas', lat: '34.799999', long: '-92.199997' },
     { value: 'AZ', name: 'Arizona', lat: '34.048927', long: '-111.093735' },
