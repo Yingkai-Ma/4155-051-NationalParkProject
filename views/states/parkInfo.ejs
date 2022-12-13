@@ -14,7 +14,7 @@
 
   <nav class="navbar navbar-expand-lg navbar-light bg-dark">
     <a class="navbar-brand" href="#">TraXersal</a>
-    <a class="navbar-brand" href="#">You are in <%= parkCode%></a>
+    <a class="navbar-brand" href="#" id="currentPark">You are in </a>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto"></ul>
@@ -55,18 +55,18 @@
     <div class="tabPanel" id="tab2">
     </div>
     <div class="tabPanel" id="tab3"></div>
-    <div class="tabPanel">Tab 4:Content</div>
-    <div class="tabPanel">Tab 5:Content</div>
-    <div class="tabPanel">Tab 6:Content</div>
-    <div class="tabPanel">Tab 7:Content</div>
-    <div class="tabPanel">Tab 8:Content</div>
-    <div class="tabPanel">Tab 9:Content</div>
+    <div class="tabPanel" id ="tab4"></div>
+    <div class="tabPanel" id ="tab5"></div>
+    <div class="tabPanel" id ="tab6"></div>
+    <div class="tabPanel" id ="tab7"></div>
+    <div class="tabPanel" id ="tab8"></div>
+    <div class="tabPanel" id ="tab9"></div>
   </div>
 
   <script src="/javascript/myScript.js"></script>
 
   <script>
-    (function fetchData() {
+    (function fetchDataTab12() {
       fetch('https://developer.nps.gov/api/v1/parks?parkCode=<%=parkCode%>&api_key=9pmlVnQfy5VVDKxPYb8Du9UOMm6e5Nem5dGuLJL1')
         .then(res => {
           return res.json();
@@ -81,6 +81,8 @@
           p.appendChild(text);
           var element = document.getElementById("tab1");
           element.appendChild(p);
+          var parkelement = document.getElementById("currentPark");
+          parkelement.append(parkData.fullName);
           //Getting Address
           var p1 = document.createElement('p');
           var text1Raw = parkData.addresses[1].line1 + ' ' + parkData.addresses[1].city + ' ' + parkData.addresses[1].stateCode + ' ' + parkData.addresses[1].postalCode;
@@ -147,7 +149,85 @@
         })
         .catch(error => console.log(error));
     }
-    )();   
+    )();
+
+
+    (function fetchDataTab4() {
+      fetch('https://developer.nps.gov/api/v1/alerts?parkCode=<%=parkCode%>&api_key=9pmlVnQfy5VVDKxPYb8Du9UOMm6e5Nem5dGuLJL1')
+        .then(res => {
+          return res.json();
+        })
+        .then((park) => {
+          let parkData = park.data;
+          console.log(parkData);
+          let element = document.getElementById("tab4");
+          let category = parkData.category;
+          let space = document.createElement('br');
+          parkData.forEach(alert => {
+            let header = document.createElement('h1');
+            let paragraph = document.createElement('p');
+            let category = alert.category;
+            let description = alert.description;
+            header.append(category);
+            paragraph.append(description);
+            element.append(header);
+            element.append(paragraph);
+          });
+        })
+        .catch(error => console.log(error));
+    }
+    )();
+
+
+    (function fetchDataTab5() {
+      fetch('https://developer.nps.gov/api/v1/parks?parkCode=<%=parkCode%>&api_key=9pmlVnQfy5VVDKxPYb8Du9UOMm6e5Nem5dGuLJL1')
+        .then(res => {
+          return res.json();
+        })
+        .then((park) => {
+          let zip = park.data[0].addresses[0].postalCode;
+          console.log(zip);
+          return zip;
+        })
+        .then((zip) => {
+          fetch('https://api.weatherapi.com/v1/current.json?key=1d92743685794826afd50627221312&q=' + zip + '&aqi=no')
+        .then(res => {
+          return res.json();
+        })
+        .then((weather) => {
+          let weatherData = weather.current;
+          console.log(weatherData);
+          let element = document.getElementById("tab5");
+          let temp = weatherData.temp_f;
+          let condition = weatherData.condition.text;
+          let icon = weatherData.condition.icon;
+          let wind = weatherData.wind_mph;
+          let humidity = weatherData.humidity;
+          let feelsLike = weatherData.feelslike_f;
+          let space = document.createElement('br');
+          let tempP = document.createElement('p');
+          let conditionP = document.createElement('p');
+          let windP = document.createElement('p');
+          let humidityP = document.createElement('p');
+          let feelsLikeP = document.createElement('p');
+          let iconImg = document.createElement('img');
+          tempP.append('Temperature: ' + temp + 'F');
+          conditionP.append('Condition: ' + condition);
+          windP.append('Wind: ' + wind + 'mph');
+          humidityP.append('Humidity: ' + humidity + '%');
+          feelsLikeP.append('Feels Like: ' + feelsLike + 'F');
+          iconImg.src = icon;
+          element.append(tempP);
+          element.append(conditionP);
+          element.append(windP);
+          element.append(humidityP);
+          element.append(feelsLikeP);
+          element.append(iconImg);
+        })
+        })
+      
+    }
+    )();
   </script>
 
 
