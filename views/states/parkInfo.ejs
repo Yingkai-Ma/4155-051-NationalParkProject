@@ -287,22 +287,26 @@
             let paragraph = document.createElement('p');
             let title = video.title;
             let description = video.description;
-            let url = video.permalinkURL;
-            let link = document.createElement('a');
-            link.setAttribute('href', url);
             header.append(title);
             paragraph.append(description);
-            link.append('Click to view!');
             element.append(header);
             element.append(paragraph);
-            element.append(link);
+            let url = video.permalinkUrl;
+            console.log(url);
+            // check if url exists
+            if (url != null) {
+              let link = document.createElement('a');
+              link.setAttribute('href', url);
+              link.append('Click to view!');
+              element.append(link);
+            }           
           });
         })
         .catch(error => console.log(error));
     })();
 
 
-    (function fetchDataTab6() {
+    (function fetchDataTab7() {
       fetch('https://developer.nps.gov/api/v1/tours?parkCode=<%=parkCode%>&api_key=9pmlVnQfy5VVDKxPYb8Du9UOMm6e5Nem5dGuLJL1')
         .then(res => {
           return res.json();
