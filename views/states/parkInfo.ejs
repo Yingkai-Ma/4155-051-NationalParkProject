@@ -46,10 +46,8 @@
       <button onclick="showPanel(2,'#bee8ca')">Campgrounds and Amenties</button>
       <button onclick="showPanel(3,'#bee8ca')">Alerts</button>
       <button onclick="showPanel(4,'#bee8ca')">Weather</button>
-      <button onclick="showPanel(5,'#bee8ca')">Comments and Reviews</button>
-      <button onclick="showPanel(6,'#bee8ca')">Images</button>
-      <button onclick="showPanel(7,'#bee8ca')">Tours</button>
-      <button onclick="showPanel(8,'#bee8ca')">Extra Space</button>
+      <button onclick="showPanel(5,'#bee8ca')">Multimedia</button>
+      <button onclick="showPanel(6,'#bee8ca')">Tours</button>
     </div>
     <div class="tabPanel" id="tab1"></div>
     <div class="tabPanel" id="tab2">
@@ -94,12 +92,59 @@
           var text2 = document.createTextNode(parkData.contacts.phoneNumbers[0].phoneNumber);
           p2.appendChild(text2);
           element.appendChild(p2);
+          console.log(parkData.operatingHours[0].standardHours);
           //Getting Operation Hours
-          var p3 = document.createElement('p');
-          text3Raw = 'Monday: ' + parkData.operatingHours[0].standardHours.monday + '  Tuesday: ' + parkData.operatingHours[0].standardHours.tuesday + ' Wednesday: ' + parkData.operatingHours[0].standardHours.wednesday + ' Thursday: ' + parkData.operatingHours[0].standardHours.thursday + ' Friday: ' + parkData.operatingHours[0].standardHours.friday + ' Saturday: ' + parkData.operatingHours[0].standardHours.saturday + ' Sunday: ' + parkData.operatingHours[0].standardHours.sunday;
-          var text3 = document.createTextNode(text3Raw);
-          p3.appendChild(text3);
-          element.appendChild(p3);
+          for(let i=0; i < 7; i++){
+            if(i == 0){
+              var p3 = document.createElement('p');
+              var text3 = document.createTextNode('Sunday: ' + parkData.operatingHours[0].standardHours.sunday);
+              p3.append(text3);
+              element.append(p3);
+            }
+            else if(i == 1){
+              var p4 = document.createElement('p');
+              var text4 = document.createTextNode('Monday: ' + parkData.operatingHours[0].standardHours.monday);
+              p4.append(text4);
+              element.append(p4);
+            }
+            else if(i == 2){
+              var p5 = document.createElement('p');
+              var text6 = document.createTextNode('Tuesday: ' + parkData.operatingHours[0].standardHours.tuesday);
+              p5.append(text6);
+              element.append(p5);
+            }
+            else if(i == 3){
+              var p6 = document.createElement('p');
+              var text7 = document.createTextNode('Wednesday: ' + parkData.operatingHours[0].standardHours.wednesday);
+              p6.append(text7);
+              element.append(p6);
+            }
+            else if(i == 4){
+              var p7 = document.createElement('p');
+              var text8 = document.createTextNode('Thursday: ' + parkData.operatingHours[0].standardHours.thursday);
+              p7.append(text8);
+              element.append(p7);
+            }
+            else if(i == 5){
+              var p8 = document.createElement('p');
+              var text9 = document.createTextNode('Friday: ' + parkData.operatingHours[0].standardHours.friday);
+              p8.append(text9);
+              element.append(p8);
+            }
+            else if(i == 6){
+              var p9 = document.createElement('p');
+              var text10 = document.createTextNode('Saturday: ' + parkData.operatingHours[0].standardHours.saturday);
+              p9.append(text10);
+              element.append(p9);
+            }
+
+                
+            
+          }
+
+          
+          
+          
           //-----------Tab2 Filling-----------------------
           const eventName = parkData.activities.map(event => event.name);
           var element2 = document.getElementById("tab2");
@@ -141,10 +186,9 @@
           });
           let url = parkData[0].parks[0].url;
           let link = document.createElement('a');
-          link.append('ClickMe!')
+          link.append('Click here to visit the offical website for more information!')
           link.href = url;
           link.target = '_blank';
-          element.append('Please visit the offical website for more information:   ');
           element.append(link);
         })
         .catch(error => console.log(error));
@@ -225,9 +269,70 @@
           element.append(iconImg);
         })
         })
-      
-    }
-    )();
+    })();
+
+
+    (function fetchDataTab6() {
+      fetch('https://developer.nps.gov/api/v1/multimedia/videos?parkCode=<%=parkCode%>&api_key=9pmlVnQfy5VVDKxPYb8Du9UOMm6e5Nem5dGuLJL1')
+        .then(res => {
+          return res.json();
+        })
+        .then((park) => {
+          let parkData = park.data;
+          console.log(parkData);
+          let element = document.getElementById("tab6");
+          parkData.forEach(video => {
+            console.log(video);
+            let header = document.createElement('h1');
+            let paragraph = document.createElement('p');
+            let title = video.title;
+            let description = video.description;
+            let url = video.permalinkURL;
+            let link = document.createElement('a');
+            link.setAttribute('href', url);
+            header.append(title);
+            paragraph.append(description);
+            link.append('Click to view!');
+            element.append(header);
+            element.append(paragraph);
+            element.append(link);
+          });
+        })
+        .catch(error => console.log(error));
+    })();
+
+
+    (function fetchDataTab6() {
+      fetch('https://developer.nps.gov/api/v1/tours?parkCode=<%=parkCode%>&api_key=9pmlVnQfy5VVDKxPYb8Du9UOMm6e5Nem5dGuLJL1')
+        .then(res => {
+          return res.json();
+        })
+        .then((park) => {
+          let parkData = park.data;
+          console.log(parkData);
+          let element = document.getElementById("tab7");
+          parkData.forEach(tour => {
+            console.log(tour);
+            let header = document.createElement('h1');
+            let paragraph = document.createElement('p');
+            let title = tour.title;
+            let description = tour.description;
+            let url = tour.url;
+            let link = document.createElement('a');
+            link.setAttribute('href', url);
+            header.append(title);
+            paragraph.append(description);
+            link.append('Click to view more information on this tour!');
+            element.append(header);
+            element.append(paragraph);
+            element.append(link);
+          });
+
+        })
+        .catch(error => console.log(error));
+    })();
+
+
   </script>
 
 
