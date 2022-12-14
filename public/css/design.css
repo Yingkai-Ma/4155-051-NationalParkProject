@@ -6,6 +6,14 @@
     margin-inline-start: 8px;
 }
 
+.navbar-brand{
+    font: 20px Apple Chancery;
+    font-weight:bold;
+    margin: 5px;
+    padding: 20px;
+    
+}
+
 /* css for home page */
 
 body,html{
@@ -45,6 +53,101 @@ body,html{
     margin-top: 10px; 
     width: 10%;
 }
+
+/* photo change */
+.wrap {
+    writing-mode: horizontal-tb;
+    margin-inline-start: 20px;
+    margin-top: 10px;  
+    float: left;
+    width: 800px;
+    height: 400px;
+    position: relative;
+}
+
+.list {
+    width: 800px;
+    height: 400px;
+    position: relative;
+    padding-left: 0px;
+}
+
+.item {
+    width: 800px;
+    height: 400px;
+    list-style: none;
+    position: absolute;
+    left: 0;
+    opacity: 0;
+    transition: all .8s;
+}
+.item img{
+    width: 800px;
+    height: 400px;
+}
+
+.item.active {
+    z-index: 10;
+    opacity: 1;
+}
+
+.btn1 {
+    width: 60px;
+    height: 100px;
+    z-index: 100;
+    top: 150px;
+    position: absolute;
+    background-color: rgba(0, 255, 255, 0);
+    border: none;
+}
+.btn2 {
+    width: 60px;
+    height: 100px;
+    z-index: 100;
+    top: 150px;
+    position: absolute;
+    background-color: rgba(0, 255, 255, 0);
+    border: none;
+}
+
+#leftBtn {
+    left: 0px;
+}
+
+#rightBtn {
+    right: 0px;
+}
+
+.pointList {
+    list-style: none;
+    padding-left: 0px;
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    z-index: 200;
+}
+
+.point {
+    width: 10px;
+    height: 10px;
+    background-color: antiquewhite;
+    border-radius: 100%;
+    float: left;
+    margin-right: 8px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: slategray;
+    cursor: pointer;  
+}
+
+.point.active{
+    background-color: cadetblue;
+}
+
+
+
+
+
 
 /* css for state page */
 .stateName {
@@ -123,6 +226,11 @@ body,html{
 
 
 /* style="margin: 20px;" */
+
+
+/* #tab1{
+    font-weight: bold;
+} */
 
 
 
