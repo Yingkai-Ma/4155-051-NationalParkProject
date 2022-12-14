@@ -11,7 +11,8 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-dark">
     <a class="navbar-brand" href="#" style="color: #3CB371; font-size: 35px;">TraXersal</a>
-    <a class="navbar-brand" href="#" style="color: #3CB371; font: 20px Comic Sans MS; font-weight: lighter;">U.S. National Parks</a>
+    <a class="navbar-brand" href="#" style="color: #3CB371; font: 20px Comic Sans MS; font-weight: lighter;">U.S.
+        National Parks</a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto"></ul>
 
@@ -22,7 +23,10 @@
 
     </div>
     <div class="homeBt">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Home</button>
+        <form>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" formmethod="GET"
+                formaction='/'>Home</button>
+        </form>
     </div>
 
     <div class="LoginBt">
@@ -43,15 +47,16 @@
             <li class="item"><img src="/images/park5.jpeg"></li>
         </ul>
         <ul class="pointList">
-            <li class="point active" data-index = 0></li>
-            <li class="point" data-index = 1></li>
-            <li class="point" data-index = 2></li>
-            <li class="point" data-index = 3></li>
-            <li class="point" data-index = 4></li>
+            <li class="point active" data-index=0></li>
+            <li class="point" data-index=1></li>
+            <li class="point" data-index=2></li>
+            <li class="point" data-index=3></li>
+            <li class="point" data-index=4></li>
         </ul>
-        <button class="btn1" id="leftBtn"> < </button> 
-        <button class="btn2" id="rightBtn"> > </button>
- 
+        <button class="btn1" id="leftBtn">
+            < </button>
+                <button class="btn2" id="rightBtn"> > </button>
+
     </div>
     <script>
         var items = document.querySelectorAll(".item");
@@ -62,8 +67,8 @@
         var index = 0;
         // timer delay for inital value
         var time = 0;
-        
- 
+
+
         //clear active
         var clearActive = function () {
             for (i = 0; i < items.length; i++) {
@@ -73,7 +78,7 @@
                 points[j].className = 'point';
             }
         }
- 
+
         //chage active
         var goIndex = function () {
             clearActive();
@@ -89,7 +94,7 @@
             }
             goIndex();
         }
- 
+
         //button right
         var goRight = function () {
             if (index < 4) {
@@ -99,42 +104,42 @@
             }
             goIndex();
         }
-        
+
         left.addEventListener('click', function () {
             goLeft();
             time = 0;
         })
- 
+
         right.addEventListener('click', function () {
             goRight();
             time = 0;
         })
- 
-        for(i = 0;i < points.length;i++){
-            points[i].addEventListener('click',function(){
+
+        for (i = 0; i < points.length; i++) {
+            points[i].addEventListener('click', function () {
                 var pointIndex = this.getAttribute('data-index')
                 index = pointIndex;
                 goIndex();
                 time = 0;
             })
         }
-        
+
         var timer;
-        function play(){
-         timer = setInterval(() => {
-            time ++;
-            if(time == 20 ){
-                goRight();
-                time = 0;
-            }    
-        },100)
-    }
+        function play() {
+            timer = setInterval(() => {
+                time++;
+                if (time == 20) {
+                    goRight();
+                    time = 0;
+                }
+            }, 100)
+        }
         play();
-        all.onmousemove = function(){
+        all.onmousemove = function () {
             clearInterval(timer)
         }
 
-        all.onmouseleave = function(){
+        all.onmouseleave = function () {
             play();
         }
     </script>

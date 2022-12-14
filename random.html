@@ -1,0 +1,20 @@
+<script>
+  const model = require('../models/states')
+
+  function initMap() {
+    // The location of Uluru
+    const stateLat = parseInt(document.getElementById("stateLat").innerHTML);
+    const stateLong = parseInt(document.getElementById("stateLong").innerHTML);
+    const state = { lat: stateLat, lng: stateLong };
+    // The map, centered at Uluru
+    const map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 5,
+      center: state,
+    });
+    // The marker, positioned at Uluru
+    const marker = new google.maps.Marker({
+      position: state,
+      map: map,
+    });
+  }
+</script>

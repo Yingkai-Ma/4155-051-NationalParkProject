@@ -12,8 +12,14 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-dark">
       <a class="navbar-brand" href="#" style="color: #3CB371; font-size: 35px;">TraXersal</a>
-      <a class="navbar-brand" href="#" style="color: #3CB371; font: 20px Comic Sans MS; font-weight: lighter;">You are in State of <%= state.name%></a>
-
+      <a class="navbar-brand" href="#" style="color: #3CB371; font: 20px Comic Sans MS; font-weight: lighter;">You are
+        in State of <%= state.name%></a>
+      <p id="stateLat">
+        <%= state.lat%>
+      </p>
+      <p id="stateLong">
+        <%= state.long%>
+      </p>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto"></ul>
 
@@ -24,7 +30,10 @@
 
       </div>
       <div class="homeBt">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Home</button>
+        <form>
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit" formmethod="GET"
+            formaction='/'>Home</button>
+        </form>
       </div>
 
       <div class="LoginBt">
@@ -53,21 +62,42 @@
     </script>
 
 
-
     <script>
+      const model = require('../models/states')
+
       function initMap() {
-        // The location of Uluru
-        const uluru = { lat: -25.344, lng: 131.031 };
-        // The map, centered at Uluru
+        // The location of the selected state
+        const stateLat = parseInt(document.getElementById("stateLat").innerHTML);
+        const stateLong = parseInt(document.getElementById("stateLong").innerHTML);
+        const state = { lat: stateLat, lng: stateLong };
+
+        // The map, centered at state
         const map = new google.maps.Map(document.getElementById("map"), {
-          zoom: 4,
-          center: uluru,
+          zoom: 7,
+          center: state,
         });
-        // The marker, positioned at Uluru
-        const marker = new google.maps.Marker({
-          position: uluru,
-          map: map,
-        });
+        // The marker, positioned at selectedState
+        (function fetchData() {
+          fetch('https://developer.nps.gov/api/v1/parks?stateCode=<%= state.value %>&api_key=9pmlVnQfy5VVDKxPYb8Du9UOMm6e5Nem5dGuLJL1')
+            .then(res => {
+              return res.json();
+            })
+            .then((res) => {
+              const data = res.data;
+              for (data.park of data) {
+                const parkPoint = { lat: parseInt(data.park.latitude), lng: parseInt(data.park.longitude) }
+                let marker = new google.maps.Marker({
+                  position: parkPoint,
+                  map: map,
+                });
+
+              }
+
+
+            })
+            .catch(error => console.log(error));
+        })();
+
       }
     </script>
 
@@ -98,6 +128,8 @@
               var element = document.getElementById("info");
               element.append(a);
             }
+
+
           })
           .catch(error => console.log(error));
       })();
