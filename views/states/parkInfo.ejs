@@ -74,21 +74,29 @@
           console.log(parkData);
           //-----------Tab1 Filling-----------------------
           //Getting Park Name
-          var p = document.createElement('p');
+          
+          // let header = document.createElement('h1');
+          //   let paragraph = document.createElement('p');
+          //   let category = alert.category;
+          //   let description = alert.description;
+          
+          var p = document.createElement('h1');
           var text = document.createTextNode(parkData.fullName);
+          var space = document.createElement('br');
           p.appendChild(text);
           var element = document.getElementById("tab1");
           element.appendChild(p);
           var parkelement = document.getElementById("currentPark");
           parkelement.append(parkData.fullName);
           //Getting Address
-          var p1 = document.createElement('p');
+          var p1 = document.createElement('h3');
           var text1Raw = parkData.addresses[1].line1 + ' ' + parkData.addresses[1].city + ' ' + parkData.addresses[1].stateCode + ' ' + parkData.addresses[1].postalCode;
           var text1 = document.createTextNode(text1Raw);
           p1.append(text1);
           element.append(p1);
           //Getting Phone Numbers
-          var p2 = document.createElement('p');
+          var p2 = document.createElement('h4');
+          var space = document.createElement('br');
           var text2 = document.createTextNode(parkData.contacts.phoneNumbers[0].phoneNumber);
           p2.appendChild(text2);
           element.appendChild(p2);

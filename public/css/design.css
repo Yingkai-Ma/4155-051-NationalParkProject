@@ -214,23 +214,37 @@ body,html{
 
 
 
+/* tab page for tab1 content */
+#tab1 h1{
+    font: gill sans;
+    font: bold;
+    line-height: 80px;
+}
+
+#tab1 h3{
+    font: gill sans;
+    color: rgb(0, 0, 0);
+    font-weight: lighter;
+    text-shadow: #516145;
+    line-height: 30px;
+}
+
+#tab1 h4{
+    font: gill sans;
+    color: rgb(0, 0, 0);
+    font-weight: lighter;
+    text-shadow: #516145;
+    line-height: 30px;
+    padding-bottom: 50px;
+}
+
+#tab1 p{
+    font: 1em gill sans;
+    font-weight: lighter;
+    line-height: 5px;
+}
 
 
-
-
-
-/* .buttonContainer{
-    color: blanchedalmond;
-} */
-
-
-
-/* style="margin: 20px;" */
-
-
-/* #tab1{
-    font-weight: bold;
-} */
 
 
 
