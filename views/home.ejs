@@ -10,9 +10,17 @@
 
 
 <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-    <a class="navbar-brand" href="#" style="color: #3CB371; font-size: 35px;">TraXersal</a>
+    <a class="navbar-brand" href="/" style="color: #3CB371; font-size: 35px;">TraXersal</a>
     <a class="navbar-brand" href="#" style="color: #3CB371; font: 20px Comic Sans MS; font-weight: lighter;">U.S.
         National Parks</a>
+        <%if(!user){%>
+            <a href='/users/signUp'>Sign Up</a> 
+
+    <%} else{%>
+        
+        <a href='/users/profile'>Profile</a> 
+        <a href='/users/logout'>Logout</a>
+        <%}%>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto"></ul>
 
@@ -28,10 +36,13 @@
                 formaction='/'>Home</button>
         </form>
     </div>
-
+    <%if(!user){%>
     <div class="LoginBt">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="Login">Login</button>
+        <button onclick="window.location.href='/users/login';" class="btn btn-outline-success my-2 my-sm-0" type="Login">Login</button>
     </div>
+    <%} else{%>
+        <a href='/users/logout'>Logout</a>
+        <%}%>
 </nav>
 
 </header>

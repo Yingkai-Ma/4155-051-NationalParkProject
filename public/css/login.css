@@ -1,7 +1,7 @@
 body{
     margin: 0;
     padding: 0;
-    background: url(./image/signPage1.jpeg);
+    background: url(./image/mountain.png);
     background-size: cover;
     background-position: center;
     font-family: sans-serif;
@@ -12,7 +12,7 @@ body{
     height: 420px;
     background: #53524e;
     color: #fff;
-    top: 40%;
+    top: 0%;
     left: 50%;
     position: absolute;
     transform: translate(-50%, -50%);
