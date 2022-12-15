@@ -60,21 +60,21 @@ body,html{
     margin-inline-start: 20px;
     margin-top: 10px;  
     float: left;
-    width: 800px;
-    height: 400px;
+    width: 1100px;
+    height: 700px;
     position: relative;
 }
 
 .list {
-    width: 800px;
-    height: 400px;
+    width: 1100px;
+    height: 700px;
     position: relative;
     padding-left: 0px;
 }
 
 .item {
-    width: 800px;
-    height: 400px;
+    width: 1100px;
+    height: 700px;
     list-style: none;
     position: absolute;
     left: 0;
@@ -82,8 +82,8 @@ body,html{
     transition: all .8s;
 }
 .item img{
-    width: 800px;
-    height: 400px;
+    width: 1100px;
+    height: 700px;
 }
 
 .item.active {
@@ -158,8 +158,8 @@ body,html{
 #map{
     margin-inline-start: 20px;
     margin-top: 10px;
-    width: 800px; 
-    height: 467px; 
+    width: 1100px; 
+    height: 700px; 
     border: none;
     float: left;
     background-color:#516145;
@@ -185,6 +185,12 @@ body,html{
     width:20%
     /* border: 2px solid rgb(19, 162, 187); */
     }
+
+.llnumber{
+    float: right;
+    padding-top: 600px;
+    color: #516145;
+}
 
 
 /* Below is the tab page/ park detail  */

@@ -14,33 +14,31 @@
       <a class="navbar-brand" href="#" style="color: #3CB371; font-size: 35px;">TraXersal</a>
       <a class="navbar-brand" href="#" style="color: #3CB371; font: 20px Comic Sans MS; font-weight: lighter;">You are
         in State of <%= state.name%></a>
-      <p id="stateLat">
-        <%= state.lat%>
-      </p>
-      <p id="stateLong">
-        <%= state.long%>
-      </p>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto"></ul>
-
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-
+          <ul class="navbar-nav mr-auto"></ul>
+  
+          <form class="form-inline my-2 my-lg-0">
+              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+  
       </div>
       <div class="homeBt">
         <form>
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit" formmethod="GET"
-            formaction='/'>Home</button>
+          formaction='/' style="float: left;">Home</button>
         </form>
       </div>
-
+      
+      
+  
       <div class="LoginBt">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="Login">Login</button>
+          <button class="btn btn-outline-success my-2 my-sm-0" type="Login">Login</button>
       </div>
+  </nav>
 
-    </nav>
+        
+   
 
   </header>
 
@@ -136,7 +134,7 @@
     </script>
 
 
-    <div class="list-group" id="info" style="width: 550px;">
+    <div class="list-group" id="info" style="width: 750px;">
 
 
     </div>
@@ -145,6 +143,17 @@
 
 
     </div>
+
+    <div class="llnumber">
+      <p id="stateLat">
+        <%= state.lat%>
+      </p>
+      <p id="stateLong">
+        <%= state.long%>
+      </p>
+    </div>
+
+
   </body>
 
   </html
