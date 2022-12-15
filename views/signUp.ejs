@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sign up</title>
+    <link rel="stylesheet" href="/css/design.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <a class="navbar-brand" href="/" style="color: #3CB371; font-size: 35px;">TraXersal</a>
+    <a class="navbar-brand" href="#" style="color: #3CB371; font: 20px Comic Sans MS; font-weight: lighter;">U.S.
+        National Parks</a>
+        <%if(!user){%>
+            <a href='/users/signUp'>Sign Up</a> /
+            <a href='/users/login'>  Login</a>
+        </nav>
+        <%} else{%>
+
+			<a href='/users/profile'>Profile</a> 
+			<a href='/users/logout'>Logout</a>
+			<%}%>
+
+    <main>
+        <h1>Sign Up page</h1>
+        <form action="/users" method="POST">
+         <label for="firstName">First Name</label>
+         <input type="text" id="firstName" name="firstName" required><br><br>
+         <label for="lastName">Last Name</label>
+          <input type="text" id="lastName" name="lastName" required><br><br>
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required><br><br>
+           <label for="password">Password</label>
+           <input type="password" id="password" name="password" minlength="7" maxlength="64" required><br><br>
+           <input type="submit" value="Sign Up" class="button">
+        </form>
+    </main>
+
+    </html>
